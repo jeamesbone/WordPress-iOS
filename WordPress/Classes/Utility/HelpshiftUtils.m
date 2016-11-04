@@ -34,9 +34,14 @@ CGFloat const HelpshiftFlagCheckDelay = 10.0;
 
 + (void)setup
 {
+    NSString *apiKey = [ApiCredentials helpshiftAPIKey];
+    if (apiKey == nil || [apiKey isEqualToString: @""]) {
+        return;
+    }
+
     [HelpshiftCore initializeWithProvider:[HelpshiftSupport sharedInstance]];
     [[HelpshiftSupport sharedInstance] setDelegate:[HelpshiftUtils sharedInstance]];
-    [HelpshiftCore installForApiKey:[ApiCredentials helpshiftAPIKey] domainName:[ApiCredentials helpshiftDomainName] appID:[ApiCredentials helpshiftAppId]];
+    [HelpshiftCore installForApiKey:apiKey domainName:[ApiCredentials helpshiftDomainName] appID:[ApiCredentials helpshiftAppId]];
     
     // Lets enable Helpshift by default on startup because the time to get data back from Mixpanel
     // can result in users who first launch the app being unable to contact us.
