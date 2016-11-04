@@ -386,7 +386,7 @@ int ddLogLevel = DDLogLevelInfo;
     [KeychainTools processKeychainDebugArguments];
 #endif
 
-    [HelpshiftUtils setup];
+    //[HelpshiftUtils setup];
     
     // Networking setup
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];

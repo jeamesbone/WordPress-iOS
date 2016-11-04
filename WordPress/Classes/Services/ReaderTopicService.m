@@ -256,16 +256,9 @@ static NSString * const ReaderTopicCurrentTopicPathKey = @"ReaderTopicCurrentTop
                                               inManagedObjectContext:self.managedObjectContext];
     }
     topic.type = [ReaderSavedPostsTopic TopicType];
-    topic.path = @""; // TODO: See if we can make this optional
+    topic.path = nil; // TODO: See if we can make this optional
     topic.title = @"Saved Posts"; // TODO: Extract this
     topic.showInMenu = YES;
-
-    ReaderPostService *postService = [[ReaderPostService alloc] initWithManagedObjectContext:self.managedObjectContext];
-    NSArray *posts = [postService fetchSavedPosts];
-
-    for (ReaderPost *post in posts) {
-        post.topic = topic;
-    }
 
     [[ContextManager sharedInstance] saveContextAndWait:self.managedObjectContext];
 

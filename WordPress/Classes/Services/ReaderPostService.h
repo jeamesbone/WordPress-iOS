@@ -91,7 +91,7 @@ extern NSString * const ReaderPostServiceErrorDomain;
 
 /**
  Fetch the saved posts from the context.
-
+ 
  @return an array containing all posts with the isSaved flag set to true.
  */
 - (NSArray<ReaderPost *> *)fetchSavedPosts;
